@@ -1,18 +1,10 @@
 <?php
 declare(strict_types=1);
 
-/**
- * Clase de apoyo para mostrar las vistas.
- * Siempre añade la cabecera y el pie comunes.
- */
+
 class Pages
 {
-    /**
-     * Muestra una vista dentro de la estructura común (cabecera + pie).
-     *
-     * @param string $vista  Nombre del fichero de la vista (sin .php)
-     * @param array  $datos  Variables que se pasarán a la vista
-     */
+
     public function mostrar(string $vista, array $datos = []): void
     {
         // Extraemos las variables para que estén disponibles en la vista
