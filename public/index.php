@@ -1,10 +1,15 @@
 <?php
 declare(strict_types=1);
 
-// Cargamos la configuración y el autoloader
-require_once __DIR__ . '/../config.php';
-require_once __DIR__ . '/../autoloader.php';
+// Cargamos la configuración y el autoloader (están una carpeta por encima)
+require _DIR_ . '/../config.php';
+require _DIR_ . '/../autoloader.php';
 
-// Arrancamos el FrontController
-$frontController = new FrontController();
-$frontController->manejarPeticion();
+try {
+    $front = new FrontController();
+    $front->manejarPeticion();
+} catch (Throwable $e) {
+    // Si algo falla, mostramos la página 500 sin enseñar detalles técnicos
+    $error = new ErrorController();
+    $error->error500();
+}
