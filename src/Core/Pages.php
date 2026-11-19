@@ -8,8 +8,8 @@ class Pages
     {
         extract($datos);
 
-        require RUTA_VIEWS . '/layout/header.php';
+        require RUTA_VIEWS . '/header.php';
         require RUTA_VIEWS . '/' . $vista . '.php';
-        require RUTA_VIEWS . '/layout/footer.php';
+        require RUTA_VIEWS . '/footer.php';
     }
 }
