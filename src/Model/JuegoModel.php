@@ -61,6 +61,7 @@ class JuegoModel
             'categoria'       => $datos['categoria'],
             'archivo'         => 'uploads/juegos/' . $nombreUnico,
             'nombre_original' => $datos['nombre_original'],
+            'fecha'           => date('Y-m-d H:i:s'),
         ];
 
         $json = json_encode($juegos, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
