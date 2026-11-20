@@ -43,4 +43,14 @@ class JuegoController
         header('Location: index.php?accion=juegos');
         exit;
     }
+
+    public function listar(): void
+    {
+        // Pedimos la lista al modelo
+        $modelo = new JuegoModel(RUTA_JUEGOS, RUTA_UPLOADS);
+        $juegos = $modelo->todos();
+
+        $pages = new Pages();
+        $pages->mostrar('juegos', ['juegos' => $juegos]);
+    }
 }
