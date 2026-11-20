@@ -11,7 +11,7 @@ class Pages
         extract($datos);
 
         // Cabecera común
-        require RUTA_VIEWS . '/cabecera.php';
+        require RUTA_VIEWS . '/header.php';
 
         // Contenido propio de la página
         $rutaVista = RUTA_VIEWS . '/' . $vista . '.php';
@@ -22,6 +22,6 @@ class Pages
         }
 
         // Pie común
-        require RUTA_VIEWS . '/pie.php';
+        require RUTA_VIEWS . '/footer.php';
     }
 }

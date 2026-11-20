@@ -2,8 +2,8 @@
 declare(strict_types=1);
 
 // Cargamos la configuración y el autoloader (están una carpeta por encima)
-require _DIR_ . '/../config.php';
-require _DIR_ . '/../autoloader.php';
+require __DIR__ . '/../config.php';
+require __DIR__ . '/../autoloader.php';
 
 try {
     $front = new FrontController();
