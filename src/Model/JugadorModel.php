@@ -92,4 +92,11 @@ class JugadorModel
         // 3. No existe ese correo
         return null;
     }
+
+    
+    public function total(): int
+    {
+        return count($this->todos());
+    }
+
 }

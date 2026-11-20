@@ -1,4 +1,6 @@
 <h1>Plataforma de Minijuegos</h1>
+<p>Juegos subidos: <?= htmlspecialchars((string) $totalJuegos) ?> · Jugadores 
+registrados: <?= htmlspecialchars((string) $totalJugadores) ?></p>
 
 <?php if ($usuario === null): ?>
     <p>Bienvenido, visitante.</p>
