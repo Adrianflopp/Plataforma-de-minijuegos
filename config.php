@@ -10,4 +10,7 @@ const RUTA_UPLOADS = __DIR__ . '/public/uploads/juegos';
 
 const MAX_ZIP = 10 * 1024 * 1024;
 
+
+date_default_timezone_set('Europe/Madrid');
+
 const CATEGORIAS = ['Aventura', 'Estrategia', 'Puzzle', 'Arcade'];

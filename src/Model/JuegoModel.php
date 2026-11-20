@@ -61,9 +61,28 @@ class JuegoModel
             'categoria'       => $datos['categoria'],
             'archivo'         => 'uploads/juegos/' . $nombreUnico,
             'nombre_original' => $datos['nombre_original'],
+            'fecha'           => date('Y-m-d H:i:s'),
         ];
 
         $json = json_encode($juegos, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
         file_put_contents($this->rutaJson, $json, LOCK_EX);
+    }
+
+
+    public function total(): int
+    {
+        return count($this->todos());
+    }
+
+    
+    public function porCategoria(string $categoria): array
+    {
+        $resultado = [];
+        foreach ($this->todos() as $juego) {
+            if ($juego['categoria'] === $categoria) {
+                $resultado[] = $juego;
+            }
+        }
+        return $resultado;
     }
 }

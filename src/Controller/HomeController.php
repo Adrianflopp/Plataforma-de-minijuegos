@@ -11,7 +11,15 @@ class HomeController
             $usuario = null;
         }
 
+       
+        $modeloJuegos    = new JuegoModel(RUTA_JUEGOS, RUTA_UPLOADS);
+        $modeloJugadores = new JugadorModel(RUTA_JUGADORES);
+
         $pages = new Pages();
-        $pages->mostrar('home', ['usuario' => $usuario]);
+        $pages->mostrar('home', [
+            'usuario'        => $usuario,
+            'totalJuegos'    => $modeloJuegos->total(),
+            'totalJugadores' => $modeloJugadores->total(),
+        ]);
     }
 }

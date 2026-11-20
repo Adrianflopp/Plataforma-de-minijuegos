@@ -46,11 +46,23 @@ class JuegoController
 
     public function listar(): void
     {
-        // Pedimos la lista al modelo
-        $modelo = new JuegoModel(RUTA_JUEGOS, RUTA_UPLOADS);
-        $juegos = $modelo->todos();
+    
+        $request = new formFiltroJuegosRequest($_GET);
+        $modelo  = new JuegoModel(RUTA_JUEGOS, RUTA_UPLOADS);
+
+    
+        if ($request->esValido() && $request->categoria() !== '') {
+            $juegos = $modelo->porCategoria($request->categoria());
+        } else {
+            $juegos = $modelo->todos();
+        }
 
         $pages = new Pages();
-        $pages->mostrar('juegos', ['juegos' => $juegos]);
+        $pages->mostrar('juegos', [
+            'juegos'     => $juegos,
+            'categorias' => CATEGORIAS,
+            'errores'    => $request->errores(),
+            'datos'      => $request->datos(),
+        ]);
     }
 }
