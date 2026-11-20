@@ -75,4 +75,21 @@ class JugadorModel
         $json = json_encode($jugadores, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
         file_put_contents($this->ruta, $json, LOCK_EX);
     }
+
+    // Devuelve los datos del jugador si el correo y la contraseña son correctos
+    public function verificarCredenciales(string $email, string $password): ?array
+    {
+        foreach ($this->todos() as $jugador) {
+            // 1. Buscamos el correo (sin distinguir mayúsculas)
+            if (mb_strtolower($jugador['email']) === mb_strtolower($email)) {
+                // 2. Comprobamos la contraseña con el hash guardado
+                if (password_verify($password, $jugador['password'])) {
+                    return $jugador;
+                }
+                return null;
+            }
+        }
+        // 3. No existe ese correo
+        return null;
+    }
 }
