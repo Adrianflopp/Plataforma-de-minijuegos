@@ -68,9 +68,21 @@ class JuegoModel
         file_put_contents($this->rutaJson, $json, LOCK_EX);
     }
 
-    
+
     public function total(): int
     {
         return count($this->todos());
+    }
+
+    
+    public function porCategoria(string $categoria): array
+    {
+        $resultado = [];
+        foreach ($this->todos() as $juego) {
+            if ($juego['categoria'] === $categoria) {
+                $resultado[] = $juego;
+            }
+        }
+        return $resultado;
     }
 }
