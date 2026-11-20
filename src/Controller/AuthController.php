@@ -87,4 +87,18 @@ class AuthController
         ]));
         exit;
     }
+
+    public function logout(): void
+    {
+        // 1. Iniciamos la sesión
+        session_start();
+
+        // 2. La vaciamos y la destruimos
+        $_SESSION = [];
+        session_destroy();
+
+        // 3. Redirigimos a home
+        header('Location: index.php?accion=home');
+        exit;
+    }
 }
